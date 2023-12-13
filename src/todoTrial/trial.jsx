@@ -5,7 +5,7 @@ const generator = () => {
   return Math.floor(Math.random() * 100);
 };
 
-const Trail = () => {
+const Todo = () => {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
 
@@ -50,4 +50,4 @@ const Trail = () => {
   );
 };
 
-export default Trail;
+export default Todo;
