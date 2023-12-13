@@ -1,3 +1,73 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
+// import logo from './logo.svg';
+import "./App.css";
+import { useReducer } from "react";
+
+function App() {
+  const [state, dispatch] = useReducer(reducer, intialstate);
+  return (
+    <>
+      <h1>Hello World</h1>
+      <p>{state.count}</p>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+      <button onClick={() => dispatch({ type: "reset" })}>reset</button>
+    </>
+  );
+}
+
+const intialstate = { count: 0 };
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "increment":
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case "decrement":
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    case "reset":
+      return {
+        ...state,
+        count: 0,
+      };
+    default: {
+      return state;
+    }
+  }
+};
+export default App;
+
+
+
+-----------------------------------------------------
+
+// import logo from './logo.svg';
+import "./App.css";
+import "./components/useFetch";
+import { useRef, useState } from "react";
+
+function App() {
+  const inputElement = useRef(null);
+  const [userName, setUserName] = useState("Change The Name");
+
+  function changeName() {
+    setUserName(inputElement.current.value);
+    inputElement.current.value = "";
+  }
+
+  return (
+    <>
+      <h1>{userName}</h1>
+      <input type="text" ref={inputElement} />
+      <button onClick={() => changeName()}>Change Name</button>
+    </>
+  );
+}
+
+export default App;
+
+
